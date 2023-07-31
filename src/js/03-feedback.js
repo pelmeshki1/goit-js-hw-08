@@ -26,3 +26,31 @@ messageEl.addEventListener(
     localStorage.setItem(FORM_STATE, JSON.stringify(formData));
   }, 500)
 );
+form.addEventListener('submit', handleSubmit);
+
+function updateForm() {
+  if (localStorage.getItem(FORM_STATE)) {
+    formData.email = JSON.parse(localStorage.getItem(FORM_STATE)).email;
+    formData.message = JSON.parse(localStorage.getItem(FORM_STATE)).message;
+    inputEl.value = formData.email;
+    messageEl.value = formData.message;
+  } else {
+    return;
+  }
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+
+  if (inputEl.value && messageEl.value) {
+    console.log(formData);
+    localStorage.clear();
+    event.currentTarget.reset();
+    formData = {
+      email: '',
+      message: '',
+    };
+  } else {
+    alert('Please make sure all fields are filled!');
+  }
+}
