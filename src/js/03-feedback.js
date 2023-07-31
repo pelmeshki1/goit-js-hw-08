@@ -9,6 +9,7 @@ let formData = {
   email: '',
   message: '',
 };
+
 updateForm();
 
 inputEl.addEventListener(
@@ -26,6 +27,7 @@ messageEl.addEventListener(
     localStorage.setItem(FORM_STATE, JSON.stringify(formData));
   }, 500)
 );
+
 form.addEventListener('submit', handleSubmit);
 
 function updateForm() {
