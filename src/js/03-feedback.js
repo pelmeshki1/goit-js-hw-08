@@ -9,3 +9,20 @@ let formData = {
   email: '',
   message: '',
 };
+updateForm();
+
+inputEl.addEventListener(
+  'input',
+  throttle(() => {
+    formData.email = inputEl.value;
+    localStorage.setItem(FORM_STATE, JSON.stringify(formData));
+  }, 500)
+);
+
+messageEl.addEventListener(
+  'input',
+  throttle(() => {
+    formData.message = messageEl.value;
+    localStorage.setItem(FORM_STATE, JSON.stringify(formData));
+  }, 500)
+);
